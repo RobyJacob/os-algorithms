@@ -30,7 +30,7 @@ int main(int argc, char** argv) {
 	printf("Number of processes : ");
 	scanf("%d",&n);
 	Process p[n];
-	Done d[n+3];
+	Done d[10];
 	for (int i = 0; i < n; i++) {
 		printf("Process name = ");
 		scanf("%s",p[i].name);
@@ -76,8 +76,8 @@ int main(int argc, char** argv) {
 	// d[dindex].ct,p[pindex].tt,p[pindex].wt);
 	// 	printf("\n");
 	// }
-	for (dindex = 0; dindex < n+3; dindex++) {
-		if (d[dindex].name != "null") {
+	for (dindex = 0;; dindex++) {
+		if (strcmp(d[dindex],name,"null") != 0) {
 			printf("%s %d %d\n", d[dindex].name, d[dindex].st, d[dindex].ct);
 		} else {
 			break;
