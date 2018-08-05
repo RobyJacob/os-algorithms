@@ -27,6 +27,7 @@ void sort(Process *p, int size) {
 
 int main(int argc, char** argv) {
 	int n,current_time = 0,pindex = 0,dindex = 0,idle = 0;
+	float avg_turnaround_time = 0.0;
 	printf("Number of processes : ");
 	scanf("%d",&n);
 	Process p[n];
@@ -77,11 +78,16 @@ int main(int argc, char** argv) {
 	// 	printf("\n");
 	// }
 	for (dindex = 0;; dindex++) {
-		if (strcmp(d[dindex],name,"null") != 0) {
+		if (strcmp(d[dindex].name,"null") != 0) {
 			printf("%s %d %d\n", d[dindex].name, d[dindex].st, d[dindex].ct);
+			avg_turnaround_time += d[dindex].st;
 		} else {
 			break;
 		}
 	}
+	printf("Avg turnaround time = %f\n", avg_turnaround_time);
+	// for (pindex = 0; pindex < n; pindex++) {
+	// 	printf("%s %d\n", p[pindex].name, p[pindex].wt);
+	// }
 	return 0;
 }
