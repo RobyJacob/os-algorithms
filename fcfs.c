@@ -26,7 +26,8 @@ void sort(Process *p, int size) {
 }
 
 int main(int argc, char** argv) {
-	int n,current_time = 0,pindex = 0,dindex = 0,idle = 0;
+	int n,current_time = 0,pindex = 0,dindex = 0,idle = 0,wt_sum = 0,tt_sum = 0;
+	float avg_wt, avg_tt;
 	printf("Number of processes : ");
 	scanf("%d",&n);
 	Process p[n];
@@ -66,7 +67,7 @@ int main(int argc, char** argv) {
 			current_time++;
 		}
 	}
-	strcpy(d[dindex].name,"null");
+	// strcpy(d[dindex].name,"null");
 	/*
 	 * Process name  startTime completeTime
 	 */
@@ -76,12 +77,14 @@ int main(int argc, char** argv) {
 	// d[dindex].ct,p[pindex].tt,p[pindex].wt);
 	// 	printf("\n");
 	// }
-	for (dindex = 0;; dindex++) {
-		if (strcmp(d[dindex],name,"null") != 0) {
-			printf("%s %d %d\n", d[dindex].name, d[dindex].st, d[dindex].ct);
-		} else {
-			break;
-		}
+	printf("Name\tat\tbt\twt\ttt\n");
+	for (pindex = 0; pindex < n; pindex++) {
+		printf("%s\t%d\t%d\t%d\t%d\n", p[pindex].name, p[pindex].at, p[pindex].bt, p[pindex].wt, p[pindex].tt);
+		wt_sum += p[pindex].wt;
+		tt_sum += p[pindex].tt;
 	}
+	avg_wt = (float)wt_sum / n;
+	avg_tt = (float)tt_sum / n;
+	printf("avg wt = %.3f\tavg tt = %.3f\n", avg_wt, avg_tt);
 	return 0;
 }
