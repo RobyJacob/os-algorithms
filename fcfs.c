@@ -1,16 +1,7 @@
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
-
-typedef struct process {
-	char name[50];
-	int tt, wt, bt, at, status;
-}Process;
-
-typedef struct done {
-	char name[50];
-	int st, ct;
-}Done;
+#include "fcfs.h"
 
 void sort(Process *p, int size) {
 	Process tproc;
