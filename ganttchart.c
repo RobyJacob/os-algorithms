@@ -1,1 +1,0 @@
-#include "ganttchart.h"
