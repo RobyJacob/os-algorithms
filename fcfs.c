@@ -5,7 +5,7 @@
 #include "ganttchart.h"
 #include "sort.h"
 
-int main(int argc, char** argv) {
+int main(int argc, char* argv[]) {
 	int n,current_time = 0,pindex = 0,dindex = 0,idle = 0,wt_sum = 0,tt_sum = 0;
 	float avg_wt, avg_tt;
 	printf("Number of processes : ");
