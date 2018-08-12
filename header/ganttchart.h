@@ -1,7 +1,7 @@
 #ifndef GANTTCHART
 #define GANTTCHART
 
-#include "fcfs.h"
+#include "process_entity.h"
 #include<stdio.h>
 #include<string.h>
 

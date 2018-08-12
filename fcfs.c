@@ -1,9 +1,9 @@
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
-#include "process_entity.h"
-#include "ganttchart.h"
-#include "sort.h"
+#include "header/process_entity.h"
+#include "header/ganttchart.h"
+#include "header/sort.h"
 
 int main(int argc, char* argv[]) {
 	int n,current_time = 0,pindex = 0,dindex = 0,idle = 0,wt_sum = 0,tt_sum = 0;
