@@ -12,7 +12,7 @@ void sort(Process *p, int size,char basedon[]) {
 					p[j] = p[j+1];
 					p[j+1] = tproc;
 				}
-			} else if (strcmp(basedon,"bt")) {
+			} else if (strcmp(basedon,"bt") == 0) {
 				if (p[j].bt > p[j+1].bt) {
 					tproc = p[j];
 					p[j] = p[j+1];

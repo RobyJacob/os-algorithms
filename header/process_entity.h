@@ -3,7 +3,7 @@
 
 typedef struct process {
   char name[50];
-  int at,bt,wt,tt,status;
+  int at,bt,wt,tt,status,left;
 }Process;
 
 typedef struct done {

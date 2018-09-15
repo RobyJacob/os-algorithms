@@ -22,7 +22,7 @@ int main(int argc, char* argv[]) {
 		p[i].status = 0;
 		fflush(stdin);
 	}
-	sort(p,n);
+	sort(p,n,"at");
 	while (pindex < n) {
 		if (p[pindex].status == 0 && p[pindex].at <= current_time) {
 			if (idle == 1) {
