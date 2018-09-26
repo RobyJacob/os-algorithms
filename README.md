@@ -8,8 +8,10 @@ Scheduling algorithms included here are:
 	4.Round robin scheduling
 
 Page replacement algorithms included here are:
+	
 	1.First In First Out	(FIFO
 	2.Least Recently Used	(LRU)
 	
 Deadlock avoidance algorithm included here are:
+	
 	Bankers algorithm
