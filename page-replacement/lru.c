@@ -1,15 +1,5 @@
 #include<stdio.h>
 
-int getNextFrame(int *frames,int *visit_count,int nof) {
-    for (int f = 0; f < nof; f++) {
-        if (visit_count[frames[f]] == 0 || frames[f] == -1) {
-            return f;
-        }
-    }
-
-    return -1;
-}
-
 int main() {
   int victim = -1,visit_count[50],no_of_pages,no_of_frames,page_fault_count = 0,flag = 0;
 
