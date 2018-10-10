@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<stdlib.h>
 
 int main() {
   int victim = -1,frames[50],ref[50],no_of_pages,no_of_frames,page_fault_count = 0,flag = 0;
@@ -17,6 +18,7 @@ int main() {
 
   printf("\n");
   for (int p = 0; p < no_of_pages; p++) {
+    flag = 0;
     for (int f = 0; f < no_of_frames; f++) {
       if (frames[f] == ref[p]) {
         flag = 1;
@@ -29,7 +31,8 @@ int main() {
       victim = victim % no_of_frames;
       frames[victim] = ref[p];
       for (int f = 0; f < no_of_frames; f++) {
-        printf("Frame %d : %d\n",f+1,frames[f]);
+          fflush(stdin);
+          printf("Frame %d : %d\n",f+1,frames[f]);
       }
     }
     printf("\n");
