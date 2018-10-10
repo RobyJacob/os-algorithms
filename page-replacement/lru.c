@@ -1,7 +1,29 @@
 #include<stdio.h>
+#include <stdlib.h>
+
+int leastUsed(int *arr1,int *arr2,int *pos,int frames_count) {
+    *pos++;
+    *pos %= frames_count;
+    int least = arr2[*pos];
+    *pos++;
+    while (*pos < frames_count) {
+        if (arr1[least] > arr1[arr2[*pos]]) {
+            least = arr2[*pos];
+        }
+        *pos++;
+        // *pos %= frames_count;
+    }
+
+    return least;
+}
 
 int main() {
-  int victim = -1,visit_count[50],no_of_pages,no_of_frames,page_fault_count = 0,flag = 0;
+  int victim = -1,visit_count[50],
+  no_of_pages,
+  no_of_frames,
+  page_fault_count = 0,
+  flag = 0,
+  least;
 
   printf("Number of frames : ");
   scanf("%d",&no_of_frames);
@@ -37,11 +59,17 @@ int main() {
           while (visit_count[frames[victim]] != 0) {
               victim++;
               victim %= no_of_frames;
+              if (victim == no_of_frames-1) {
+                  least = leastUsed(visit_count,frames,&victim,no_of_frames);
+                  frames[least] = ref[p];
+                  continue;
+              }
           }
           frames[victim] = ref[p];
       }
       for (int f = 0; f < no_of_frames; f++) {
-        printf("Frame %d : %d\n",f+1,frames[f]);
+          // fflush(stdin);
+          printf("Frame %d : %d\n",f+1,frames[f]);
       }
     }
     printf("\n");

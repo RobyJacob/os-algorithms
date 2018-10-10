@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 int lessThan(int *ar1,int *ar2,int size) {
     for (int i = 0; i < size; i++) {
@@ -24,7 +25,7 @@ int isAllTrue(int *arr,int size) {
 
 int main(int argc, char const *argv[]) {
     int number_of_process,number_of_resources,number_of_instances,
-    confirm = 0;
+    confirm = 0,safe_state = 0;
     printf("Number of process : ");
     scanf("%d", &number_of_process);
     printf("Number of resources : ");
@@ -58,8 +59,10 @@ int main(int argc, char const *argv[]) {
             printf("Allocate : ");
             scanf("%d", &allocate[p][r]);
             need[p][r] = max[p][r] - allocate[p][r];    /* calculate need */
+            if (need[p][r] < 0) need[p][r] = 0;
         }
         printf("Request ? : ");
+        fflush(stdin);
         scanf("%d",&confirm);
         if (confirm) {
             for (int i = 0; i < number_of_resources; i++) {
@@ -79,6 +82,7 @@ int main(int argc, char const *argv[]) {
         }
     }
 
+    /* copy contents of available to work vector */
     for (int r = 0; r < number_of_resources; r++) {
         work[r] = available[r];
     }
@@ -87,13 +91,23 @@ int main(int argc, char const *argv[]) {
         if (!finish[p] && lessThan(need[p],work,number_of_resources)) {
             addWork(work,allocate[p],number_of_resources);
             finish[p] = 1;
-            p++;
-        } else if (isAllTrue(finish,number_of_process)) {
             safe[p] = 1;
-        } else {
-            if (p < number_of_process) p++;
-            else p = 0;
+            // p++;
+        } else if (isAllTrue(finish,number_of_process)) {
+            safe_state = 1;
+            break;
         }
+        if (p < number_of_process) p++;
+        else p = 0;
+    }
+
+    if (safe_state) {
+        printf("Safe sequence\n");
+        for (int p = 0; p < number_of_process; p++) {
+            printf("%d\t",safe[p]);
+        }
+    } else {
+        printf("Process request/needs are not in safe state\n");
     }
 
     return 0;
